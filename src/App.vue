@@ -30,7 +30,6 @@
       </div>
       <a class="scroll-down-button icon-down-arrow" href="#aboutMECP"></a>
     </section>
-    <MECPHeader personName="Kyle"></MECPHeader>
     <section
       class="padding-top-lg"
       v-for="promo in content.promosList"
@@ -48,6 +47,18 @@
         </div>
         <div class="row padding-vertical-lg">
           <div class="col-lg-offset-3 col-lg-9" v-html="getHtml(promo.fields.description)"></div>
+        </div>
+        <div class="row" v-if="promo.fields.linkedPage">
+          <div class="col-sm-offset-6 col-sm-6 col-md-offset-8 col-md-4">
+            <a
+              v-bind:href="promo.fields.linkedPage.fields.slug"
+              id="p_lt_ctl09_WhyHireText_ucEditableText_widget1_ctl00_MECPLinkButton"
+              class="link-button"
+            >
+              Learn More
+              <span>&gt;</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -79,7 +90,7 @@
 
 <script>
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import MECPHeader from "./components/PersonGreeter"
+import MECPHeader from "./components/PersonGreeter";
 
 export default {
   name: "app",
